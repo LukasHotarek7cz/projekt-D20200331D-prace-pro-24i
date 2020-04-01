@@ -1,0 +1,31 @@
+
+
+
+*{
+	border-width:0px;
+	border-style:solid;
+	border-color: #ffffff;
+}
+
+
+/*invert na svjetlejsi variantu*/
+a:visited{
+	/*color:#551a8b;DEFAULT*/
+	/*color:#aae574;NEGATIV ff-55 ff-1a ff-8b*/
+	color:#af74e5;/*min=1a max=8b ff-1a=e5 e5-8b=5a 55+5a 1a+5a*/
+	}
+
+
+html, body{
+	background-color:#000000;
+	color:#ffffff;
+	}
+
+img{
+	background-color:#ffffff;
+	color:#000000;
+	}
+
+canvas{
+	background-color: #ffffff;
+	}
