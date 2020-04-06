@@ -3,12 +3,28 @@
 
 
 
+#Search{
+	border:5px solid #ff0000;
+	
+}
 
 
+#FoundImages{
+	border:5px solid #00ff00;
+	
+}
 
 
+#FoundText{
+	border:5px solid #0000ff;
+	
+}
 
 
+#log{
+	border:5px solid #ffffff;
+	
+}
 
 
 

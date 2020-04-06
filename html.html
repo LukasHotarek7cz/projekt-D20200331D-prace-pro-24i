@@ -10,11 +10,32 @@
 <meta name="description" content="html" />										<!--popis stranky-->
 <meta name="generator" content="Visual Studio Code" />							<!--program ktery stranku vytvoril-->
 <meta name="robots" content="noindex,nofollow" />								<!--boti-->
-<meta http-equiv="refresh" content="60" />										<!--refresh kazdejch 60 sekund-->
+<meta http-equiv="refresh" content="300" />										<!--refresh kazdejch 60 sekund-->
 <meta name="author" content="Lukas Hotarek" />									<!--autor-->
 
-<link rel="stylesheet" type="text/css" href="DarkTheme.css" />
 
+<script>
+// Config class
+/*
+function cGlobalConfig(){
+	this.cx = "";
+	this.APIKey = "";
+}
+var GlobalConfig = new cGlobalConfig();
+*/
+var GlobalConfig = new function(){
+	this.cx = "";
+	this.APIKey = "";
+}
+
+// DEBUG
+var t1 = "";
+var R1 = 0;
+var R2 = 0;
+</script>
+
+<script src="GlobalConfig.js" ></script>
+<link rel="stylesheet" type="text/css" href="DarkTheme.css" />
 <link rel="stylesheet" type="text/css" href="html.css" />
 <script src="html.js" ></script>
 
@@ -23,27 +44,58 @@
 <body>
 
 
+<table style="width: 1000px; height: 500px;" >
+	<tr>
+		<td colspan="2" >
+			
+			
+			
+			<div id="Search" >
+				<input type="text" id="TextSearch" class="Search" value="w3s" >
+				<button id="BTNSearch" class="Search" >Search</button>
+			</div>
+			
+			
+			
+		</td>
+	</tr>
+	<tr>
+		<td>
+			
+			
+			
+			<div id="FoundImages" >
+				
+				
+				
+			</div>
+			
+			
+			
+		</td>
+		<td>
+			
+			
+			
+			<div id="FoundText" >
+				
+				
+				
+			</div>
+			
+			
+			
+		</td>
+	</tr>
+</table>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--DEBUG-->
+<div id="log" >
+	
+	
+</div>
 
 
 
