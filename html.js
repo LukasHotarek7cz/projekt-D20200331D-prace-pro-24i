@@ -3,6 +3,7 @@
 var GlobalSearchText = "";
 
 
+
 window.onload = function(){
 var t1 = "START<br>";
 
