@@ -1,0 +1,9 @@
+
+
+
+with(GlobalConfig){
+	cx = "";
+	APIKey = "";
+}
+
+

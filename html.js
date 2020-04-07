@@ -28,17 +28,15 @@ document.querySelectorAll("button.Search").forEach(function(e1){
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var t1 = "";
-				var t2 = "";
 				
 				t1 += "<table>";
-				t2 += "<table>";
-				
-				// DEBUG
-				R1 = this.responseText;
-				R2 = JSON.parse(this.responseText);
 				
 				// JSON parse
 				var responseJSON = JSON.parse(this.responseText);
+				
+				// DEBUG
+				R1 = this.responseText;
+				R2 = responseJSON;
 				
 				// build HTML Find Text
 				responseJSON.items.forEach(function(e1){
@@ -54,7 +52,43 @@ document.querySelectorAll("button.Search").forEach(function(e1){
 					t1 += "<br>";
 					t1 += "</td></tr>";
 					
-					var src1 = e1.pagemap.cse_image;
+				});
+				
+				// DEBUG
+				document.querySelector("#log").innerHTML = "<pre>" + fTiskArrayObj(responseJSON) + "</pre>";
+				
+				// write to HTML
+				t1 += "</table>";
+				document.querySelector("#FoundText").innerHTML = t1;
+			}
+		};
+		// AJAX
+		xhttp.open("GET", "https://www.googleapis.com/customsearch/v1?key=" + GlobalConfig.APIKey + "&cx=" + GlobalConfig.cx + "&q=" + GlobalSearchText + "", true);
+		xhttp.send();
+		
+		
+		
+		
+		// AJAX
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var t2 = "";
+				
+				t2 += "<table>";
+				
+				// JSON parse
+				var responseJSON = JSON.parse(this.responseText);
+				
+				// DEBUG
+				R1 = this.responseText;
+				R2 = responseJSON;
+				
+				// build HTML Find Text
+				responseJSON.items.forEach(function(e1){
+					var src1 = e1.pagemap;
+					if(typeof(src1) != "undefined"){
+						src1 = src1.cse_image;
 					if(typeof(src1) != "undefined" && src1.length > 0){
 						src1 = src1[0].src;
 					if(typeof(src1) != "undefined"){
@@ -69,13 +103,11 @@ document.querySelectorAll("button.Search").forEach(function(e1){
 						t2 += "</a>";
 						t2 += "<br>";
 						t2 += "</td></tr>";
-					}}}
+					}}}}
 					
 				});
 				
 				// write to HTML
-				t1 += "</table>";
-				document.querySelector("#FoundText").innerHTML = t1;
 				t2 += "</table>";
 				document.querySelector("#FoundImages").innerHTML = t2;
 			}
