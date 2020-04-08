@@ -54,8 +54,6 @@ document.querySelectorAll("button.Search").forEach(function(e1){
 					
 				});
 				
-				// DEBUG
-				document.querySelector("#log").innerHTML = "<pre>" + fTiskArrayObj(responseJSON) + "</pre>";
 				
 				// write to HTML
 				t1 += "</table>";
@@ -86,26 +84,20 @@ document.querySelectorAll("button.Search").forEach(function(e1){
 				
 				// build HTML Find Text
 				responseJSON.items.forEach(function(e1){
-					var src1 = e1.pagemap;
-					if(typeof(src1) != "undefined"){
-						src1 = src1.cse_image;
-					if(typeof(src1) != "undefined" && src1.length > 0){
-						src1 = src1[0].src;
-					if(typeof(src1) != "undefined"){
-					if((/.*(\.png)|(\.jpg)/i).test(src1)){
-						t2 += "<tr><td>";
-						t2 += "<a href=\"";
-						t2 += e1.link;
-						t2 += "\" >";
-						t2 += "<img src=\"";
-						t2 += src1;
-						t2 += "\" />";
-						t2 += "</a>";
-						t2 += "<br>";
-						t2 += "</td></tr>";
-					}}}}
-					
+					t2 += "<tr><td>";
+					t2 += "<a href=\"";
+					t2 += e1.image.contextLink;
+					t2 += "\" >";
+					t2 += "<img src=\"";
+					t2 += e1.link;
+					t2 += "\" />";
+					t2 += "</a>";
+					t2 += "<br>";
+					t2 += "</td></tr>";
 				});
+				
+				// DEBUG
+				document.querySelector("#log").innerHTML = "<pre>" + fTiskArrayObj(responseJSON) + "</pre>";
 				
 				// write to HTML
 				t2 += "</table>";
@@ -113,7 +105,7 @@ document.querySelectorAll("button.Search").forEach(function(e1){
 			}
 		};
 		// AJAX
-		xhttp.open("GET", "https://www.googleapis.com/customsearch/v1?key=" + GlobalConfig.APIKey + "&cx=" + GlobalConfig.cx + "&q=" + GlobalSearchText + "", true);
+		xhttp.open("GET", "https://www.googleapis.com/customsearch/v1?key=" + GlobalConfig.APIKey + "&cx=" + GlobalConfig.cx + "&q=" + GlobalSearchText + "&searchType=image", true);
 		xhttp.send();
 		
 		
