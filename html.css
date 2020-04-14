@@ -1,34 +1,42 @@
 ﻿
-
-
-
-
-#Search{
-	border:5px solid #ff0000;
-	
-}
-
-
-#FoundImages{
-	border:5px solid #00ff00;
-	
-}
-
-
-#FoundText{
-	border:5px solid #0000ff;
-	
-}
-
-
-#log{
-	border:5px solid #ffffff;
+*{
+	box-sizing:border-box;
+	table-layout:auto;
 	
 }
 
 
 img{
-	width: 100px;
+	max-width: 100px;
 }
+
+.borders{
+	border:5px solid #bebebe;
+	border-radius: 0.7em;
+}
+
+input[type=text]{
+}
+
+
+.Search{
+}
+
+
+.FoundImages{
+	
+}
+
+
+.FoundText{
+	
+}
+
+
+.log{
+	border:5px solid #ffffff;
+	
+}
+
 
 
