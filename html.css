@@ -2,9 +2,13 @@
 *{
 	box-sizing:border-box;
 	table-layout:auto;
-	
 }
 
+body{
+	text-align: center;
+	margin: 5px;
+	padding: 5px;
+}
 
 img{
 	max-width: 100px;
@@ -12,10 +16,13 @@ img{
 
 .borders{
 	border:5px solid #bebebe;
-	border-radius: 0.7em;
+	border-radius: 0.5em;
 }
 
-input[type=text]{
+
+div{
+	margin: 5px;
+	padding: 5px;
 }
 
 
@@ -23,20 +30,24 @@ input[type=text]{
 }
 
 
+.TextSearch{
+}
+
+
+.BTNSearch{
+}
+
+
 .FoundImages{
-	
 }
 
 
 .FoundText{
-	
 }
 
 
 .log{
 	border:5px solid #ffffff;
-	
+	width: 100%;
+	text-align: left;
 }
-
-
-
