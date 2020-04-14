@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="cs-CZ">
 <head>
@@ -10,7 +10,7 @@
 <meta name="description" content="html" />										<!--popis stranky-->
 <meta name="generator" content="Visual Studio Code" />							<!--program ktery stranku vytvoril-->
 <meta name="robots" content="noindex,nofollow" />								<!--boti-->
-<meta http-equiv="refresh" content="20" />								<!--refresh kazdejch 300 sekund-->
+<meta http-equiv="refresh" content="10" />								<!--refresh kazdejch 300 sekund-->
 <meta name="author" content="Lukas Hotarek" />									<!--autor-->
 
 
@@ -36,83 +36,43 @@
 <body>
 
 
-<table style="width: 100%;" >
-	<tr>
-		<td colspan="2" style = "
-		border:5px solid #ff0000;
-		height: 100%;
-		padding: 1em;
-		" >
+<!---https://grid.layoutit.com/-->
+<div class="grid-container">
+	<div class="main">
+		<div class="Search">
 			
-			<div id="Search" class="Search" style="" >
-				<input type="text" id="TextSearch" class="textSearch borders" value="w3s" style = "
-				padding: 1em;
-				margin: 1em;
-				width: 75%;
-				">
-				<button id="BTNSearch" class="BTNSearch borders" style = "
-				padding: 1em;
-				margin: 1em;
-				width: 15%;
-				" >Search</button>
-			</div>
-			
-		</td>
-	</tr>
-	<tr style = "
-	min-height: 40em;
-	">
-		<td class="borders" style = "
-		border-color: #00ff00;
-		border-radius: 2em;
-		width: 49%;
-		vertical-align: top;
-		padding: 2em;
-		" >
-			
-			<div style="
-			top: 0px;
-			" >Image Result</div>
-			
-			<div id="FoundImages" class="FoundImages" >aaa</div>
-			
-		</td>
-		<td class="borders" style = "
-		border-color: #0000ff;
-		border-radius: 2em;
-		width: 49%;
-		vertical-align: top;
-		padding: 2em;
-		">
-			
-			<div style="
-			top: 0px;
-			display: block;
-			" >Web Result</div>
-			
-			<div id="FoundText" class="FoundText" style="
-			min-height: 30em;
-			display: block;
-			" >aaa</div>
-			
-			<div style="
-			border:1px solid #0000ff;
-			text-align: center;
-			display: block;
+			<input type="text" id="TextSearch" class="TextSearch borders" value="w3s" style="
+			padding: 1em;
+			margin: 1em;
+			width: 75%;
 			" >
-			<span>1</span>
-			<span style="
-			font-weight: bold;
-			text-decoration: underline;
-			">2</span>
-			<span>3</span>
+			<button id="BTNSearch" class="BTNSearch borders" style="
+			margin: 1em;
+			width: 15%;
+			padding: 1em;
+			" >Search</button>
 		</div>
-			
-		</td>
-	</tr>
-</table>
-
-
+		<div class="Find">
+			<div class="Image-box">
+				<div class="Image-title" >Image Result</div>
+				<div class="Image-result" id="FoundImages" >aaa</div>
+			</div>
+			<div class="Web-box">
+				<div class="Web-title">Web Result</div>
+				<div class="Web-result" id="FoundText" >aaa</div>
+				<div class="Web-navigation">
+					<span>1</span>
+					<span style="
+					font-weight: bold;
+					text-decoration: underline;
+					">2</span>
+					<span>3</span>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+</div>
 
 
 
