@@ -1,4 +1,5 @@
 
+
 /*
 globalVar.webs = [(new globalVar.cImages)];
 globalVar.images = [(new globalVar.cWebs)];
@@ -25,6 +26,9 @@ var globalVar = new function(){
 	this.webs = [];
 	this.images = [];
 	this.i1 = 0;
+	this.activNavigation = 1;
+	this.navigation = [];
+	
 	
 	this.cWebs = function(){
 		
@@ -148,9 +152,50 @@ var globalVar = new function(){
 	}
 	
 	
+	this.onload = function(){
+		var thisGlobalVar = this;
+		this.navigation = document.querySelectorAll(".navigation > *");
+		
+		
+		var R1 = function(aElement){
+			
+			thisGlobalVar.activNavigation = aElement.target.innerHTML;
+			
+			if(thisGlobalVar.activNavigation == 1){
+				thisGlobalVar.navigation[0].style.display = "none";
+				thisGlobalVar.navigation[3].style.display = "inline";
+			}
+			else{
+				thisGlobalVar.navigation[0].style.display = "inline";
+				thisGlobalVar.navigation[3].style.display = "none";
+			}
+			
+			thisGlobalVar.navigation[0].innerHTML = thisGlobalVar.activNavigation*1-1;
+			thisGlobalVar.navigation[1].innerHTML = thisGlobalVar.activNavigation;
+			thisGlobalVar.navigation[2].innerHTML = thisGlobalVar.activNavigation*1+1;
+			thisGlobalVar.navigation[3].innerHTML = thisGlobalVar.activNavigation*1+2;
+			
+			document.querySelector("#log").innerHTML += thisGlobalVar.activNavigation;
+		}
+		
+		this.navigation.forEach(function(e1){ e1.addEventListener("click", R1); });
+		
+	}
+	
+	
 };
 
 
+
+
+
+
+window.onload = function(){
+	globalVar.onload();
+	
+	
+	
+}
 
 
 
