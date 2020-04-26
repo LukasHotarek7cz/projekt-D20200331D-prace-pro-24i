@@ -84,6 +84,7 @@ var globalVar = new function(){
 		this.readAJAX = function(aIn1){
 			this.href = aIn1.image.contextLink;
 			this.img = aIn1.link;
+			//this.img = "PISTURE\\iconfinder_32_171485.png";
 		}
 		
 	}
