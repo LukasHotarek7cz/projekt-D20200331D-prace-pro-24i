@@ -19,21 +19,31 @@ h3{
 	border-radius: 0.7em;
 }
 
-input[type=text]{
+
+.textSearch{
+	padding: 1em;
+	margin: 1em;
+	width: 75%;
 }
 
-
-.Search{
+.BTNSearch{
+	padding: 1em;
+	margin: 1em;
+	width: 15%;
 }
+
 
 
 .FoundImages{
+	text-align: center;
+	width: 100%;
 	
 }
 
 
 .FoundText{
-	
+	min-height: 30em;
+	display: block;
 }
 
 
@@ -43,12 +53,15 @@ input[type=text]{
 }
 
 
+.navigation{
+	text-align: center;
+	display: block;
+}
 
 .navigation > *{
 	font-weight: bold;
 	font-size: 150%;
 	cursor: pointer;
-	color:#ffffff;
 }
 
 .navigation > span:hover{
