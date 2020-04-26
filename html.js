@@ -1,9 +1,11 @@
 
 
 /*
+globalVar.searchText = "";
 globalVar.webs = [(new globalVar.cImages)];
 globalVar.images = [(new globalVar.cWebs)];
 globalVar.i1 = 0;
+globalVar.activNavigation = 0;
 
 (new globalVar.cWebs).href
 (new globalVar.cWebs).title
@@ -21,8 +23,11 @@ globalVar.readNext()
 
 
 */
+
+
 var globalVar = new function(){
 	
+	this.searchText = "";
 	this.webs = [];
 	this.images = [];
 	this.i1 = 0;
@@ -38,11 +43,13 @@ var globalVar = new function(){
 		
 		this.toString = function (){
 			var t1 = "";
+			t1 += "<h3>";
+			t1 += this.title;
+			t1 += "</h3>";
 			t1 += "<a href=\"";
 			t1 += this.href;
 			t1 += "\" >";
-			t1 += this.title;
-			t1 += "</a><br>";
+			t1 += this.href;
 			t1 += "</a>";
 			t1 += "<br>";
 			t1 += this.snippet;
@@ -64,12 +71,11 @@ var globalVar = new function(){
 		
 		this.toString = function (){
 			var t1 = "";
-			t1 += i1;
 			t1 += "<a href=\"";
-			t1 += this.img;
+			t1 += this.href;
 			t1 += "\" >";
 			t1 += "<img src=\"";
-			t1 += this.href;
+			t1 += this.img;
 			t1 += "\" />";
 			t1 += "</a>";
 			return t1;
@@ -80,6 +86,14 @@ var globalVar = new function(){
 			this.img = aIn1.link;
 		}
 		
+	}
+	
+	this.newSearch = function(){
+		this.searchText = "";
+		this.webs = [];
+		this.images = [];
+		this.i1 = 0;
+		this.activNavigation = 1;
 	}
 	
 	this.websPush = function(aIn1){
@@ -96,6 +110,7 @@ var globalVar = new function(){
 	
 	this.readNext = function (){
 		var thisGlobalVar = this;
+		//document.querySelector("#log").innerHTML += "https://www.googleapis.com/customsearch/v1?key=" + GlobalConfig.APIKey + "&cx=" + GlobalConfig.cx + "&q=" + this.searchText + "&start=" + (this.i1+1) + "&searchType=image<br>";
 		
 		// AJAX
 		var xhttp = new XMLHttpRequest();
@@ -104,11 +119,12 @@ var globalVar = new function(){
 				JSON.parse(this.responseText).items.forEach(function(e1){
 					//globalWebs.push({"href":e1.link, "title":e1.htmlTitle, "snippet":e1.htmlSnippet});
 					thisGlobalVar.websPush(e1);
-					
 				});
+				thisGlobalVar.printWebs();
+				//document.querySelector("#log").innerHTML += "<pre>"+fTiskArrayObj(JSON.parse(this.responseText))+"</pre>";
 			}
 		};
-		xhttp.open("GET", "https://www.googleapis.com/customsearch/v1?key=" + GlobalConfig.APIKey + "&cx=" + GlobalConfig.cx + "&q=" + GlobalSearchText + "&start=" + (this.i1*10+1) + "", true);
+		xhttp.open("GET", "https://www.googleapis.com/customsearch/v1?key=" + GlobalConfig.APIKey + "&cx=" + GlobalConfig.cx + "&q=" + this.searchText + "&start=" + (this.i1+1) + "", true);
 		xhttp.send();
 		
 		// AJAX
@@ -119,17 +135,24 @@ var globalVar = new function(){
 					//globalImages.push({"href":e1.image.contextLink, "img":e1.link});
 					thisGlobalVar.imagesPush(e1);
 				});
+				thisGlobalVar.printImages();
+				//document.querySelector("#log").innerHTML += "<pre>"+fTiskArrayObj(JSON.parse(this.responseText))+"</pre>";
 			}
 		};
-		xhttp.open("GET", "https://www.googleapis.com/customsearch/v1?key=" + GlobalConfig.APIKey + "&cx=" + GlobalConfig.cx + "&q=" + GlobalSearchText + "&start=" + (this.i1*10+1) + "&searchType=image", true);
+		xhttp.open("GET", "https://www.googleapis.com/customsearch/v1?key=" + GlobalConfig.APIKey + "&cx=" + GlobalConfig.cx + "&q=" + this.searchText + "&start=" + (this.i1+1) + "&searchType=image", true);
 		xhttp.send();
 		
-		this.i1++;
+		
+		this.i1 += 10;
 	}
 	
 	
-	this.fill = function(aIn1){
-		for(var i1 = this.images.length; i1>aIn1; i1+=10){this.readNext();}
+	//???
+	this.fillData = function(){
+		if(this.images.length >= 99){return 1;}
+		if(this.i1 >= 99){return 2;}
+		var n1 =this.activNavigation*12;
+		for(var i1 = this.images.length; i1<n1; i1+=10){this.readNext();}
 	}	
 	
 	
@@ -137,50 +160,53 @@ var globalVar = new function(){
 	this.fixImage = function(){}
 	
 	
-	this.toStringImages = function(aIn1){
+	this.printWebs = function(aIn1){
 		var t1 = "";
+		t1 += "<table>";
 		
-		
-		return t1;
-	}
-	
-	
-	this.toStringWebs = function(aIn1){
-		var t1 = "";
-		
-		return t1;
-	}
-	
-	
-	this.onload = function(){
-		var thisGlobalVar = this;
-		this.navigation = document.querySelectorAll(".navigation > *");
-		
-		
-		var R1 = function(aElement){
+		var i1 = (this.activNavigation-1)*4;
+		var n2 = i1+4;
+		if(this.webs.length <= n2){return 1;}// ??? < or <=
+		while(i1<n2){
+			t1 += "<tr><td>";
+			t1 += this.webs[i1].toString();
+			t1 += "<br>";
+			t1 += "<br>";
+			t1 += "</td></tr>";
+			i1++;
 			
-			thisGlobalVar.activNavigation = aElement.target.innerHTML;
-			
-			if(thisGlobalVar.activNavigation == 1){
-				thisGlobalVar.navigation[0].style.display = "none";
-				thisGlobalVar.navigation[3].style.display = "inline";
-			}
-			else{
-				thisGlobalVar.navigation[0].style.display = "inline";
-				thisGlobalVar.navigation[3].style.display = "none";
-			}
-			
-			thisGlobalVar.navigation[0].innerHTML = thisGlobalVar.activNavigation*1-1;
-			thisGlobalVar.navigation[1].innerHTML = thisGlobalVar.activNavigation;
-			thisGlobalVar.navigation[2].innerHTML = thisGlobalVar.activNavigation*1+1;
-			thisGlobalVar.navigation[3].innerHTML = thisGlobalVar.activNavigation*1+2;
-			
-			document.querySelector("#log").innerHTML += thisGlobalVar.activNavigation;
 		}
 		
-		this.navigation.forEach(function(e1){ e1.addEventListener("click", R1); });
-		
+		t1 += "</table>";
+		document.querySelector("#FoundText").innerHTML = t1;
 	}
+	
+	
+	this.printImages = function(aIn1){
+		var t1 = "";
+		t1 += "<table>";
+		t1 += "<tr>";
+		
+		var i1 = (this.activNavigation-1)*12;
+		var n2 = i1+12;
+		if(this.images.length <= n2){return 1;}// ??? < or <=
+		while(i1<n2){
+			
+			t1 += "<td>";
+			t1 += this.images[i1].toString();
+			t1 += "</td>";
+			
+			if(0 == (i1+1)%3){t1 += "</tr><tr>";}
+			
+			i1++;
+		}
+		
+		t1 += "</tr>";
+		t1 += "</table>";
+		document.querySelector("#FoundImages").innerHTML = t1;
+	}
+	
+	
 	
 	
 };
@@ -191,7 +217,65 @@ var globalVar = new function(){
 
 
 window.onload = function(){
-	globalVar.onload();
+	
+	globalVar.navigation = document.querySelectorAll(".navigation > *");
+	
+	globalVar.navigation.forEach(function(e1){ e1.addEventListener("click", function(aElement){
+		
+		if(globalVar.searchText == ""){return 1;};
+		
+		// read number
+		globalVar.activNavigation = aElement.target.innerHTML;
+		
+		// hide first navigation number
+		if(globalVar.activNavigation == 1){
+			globalVar.navigation[0].style.display = "none";
+			globalVar.navigation[3].style.display = "inline";
+		}
+		else{
+			globalVar.navigation[0].style.display = "inline";
+			globalVar.navigation[3].style.display = "none";
+		}
+		
+		// increment
+		globalVar.navigation[0].innerHTML = globalVar.activNavigation*1-1;
+		globalVar.navigation[1].innerHTML = globalVar.activNavigation;
+		globalVar.navigation[2].innerHTML = globalVar.activNavigation*1+1;
+		globalVar.navigation[3].innerHTML = globalVar.activNavigation*1+2;
+		
+		// download new data
+		globalVar.fillData();
+		
+		// build and print web
+		//globalVar.printWebs();
+		//globalVar.printImages();
+		
+		//document.querySelector("#log").innerHTML += globalVar.activNavigation; // DEBUG
+	} ) });
+	
+	
+	
+	// Event BTNs Search
+	document.querySelectorAll("button.BTNSearch").forEach(function(e1){
+		e1.addEventListener("click", function(){
+			
+			globalVar.newSearch();
+			
+			globalVar.searchText = document.querySelector("#TextSearch").value;
+			
+			// download new data
+			globalVar.fillData();
+			
+			// build and print web
+			globalVar.printWebs();
+			globalVar.printImages();
+			
+		});
+	});
+	
+	
+	
+	
 	
 	
 	
