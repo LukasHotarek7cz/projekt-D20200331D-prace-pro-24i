@@ -10,26 +10,40 @@ img{
 	max-width: 100px;
 }
 
+h3{
+	margin: 0px;
+}
+
 .borders{
 	border:5px solid #bebebe;
 	border-radius: 0.7em;
 }
 
-input[type=text]{
+
+.textSearch{
+	padding: 1em;
+	margin: 1em;
+	width: 75%;
 }
 
-
-.Search{
+.BTNSearch{
+	padding: 1em;
+	margin: 1em;
+	width: 15%;
 }
+
 
 
 .FoundImages{
+	text-align: center;
+	width: 100%;
 	
 }
 
 
 .FoundText{
-	
+	min-height: 30em;
+	display: block;
 }
 
 
@@ -37,6 +51,28 @@ input[type=text]{
 	border:5px solid #ffffff;
 	
 }
+
+
+.navigation{
+	text-align: center;
+	display: block;
+}
+
+.navigation > *{
+	font-weight: bold;
+	font-size: 150%;
+	cursor: pointer;
+}
+
+.navigation > span:hover{
+	color:rgb(99, 99, 255);
+}
+
+.navigation > .active{
+	text-decoration: underline;
+	color:rgb(99, 99, 255);
+}
+
 
 
 
