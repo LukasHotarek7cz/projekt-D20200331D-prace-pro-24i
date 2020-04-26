@@ -10,7 +10,7 @@
 <meta name="description" content="html" />										<!--popis stranky-->
 <meta name="generator" content="Visual Studio Code" />							<!--program ktery stranku vytvoril-->
 <meta name="robots" content="noindex,nofollow" />								<!--boti-->
-<meta http-equiv="refresh" content="20" />								<!--refresh kazdejch 300 sekund-->
+<meta http-equiv="refresh" content="600" />								<!--refresh kazdejch 300 sekund-->
 <meta name="author" content="Lukas Hotarek" />									<!--autor-->
 
 
@@ -72,9 +72,13 @@
 			
 			<div style="
 			top: 0px;
+			font-size:200%;
 			" >Image Result</div>
 			
-			<div id="FoundImages" class="FoundImages" >aaa</div>
+			<div id="FoundImages" class="FoundImages" style="
+			text-align: center;
+			width: 100%;
+			" ></div>
 			
 		</td>
 		<td class="borders" style = "
@@ -88,25 +92,24 @@
 			<div style="
 			top: 0px;
 			display: block;
+			font-size:200%;
 			" >Web Result</div>
 			
 			<div id="FoundText" class="FoundText" style="
 			min-height: 30em;
 			display: block;
-			" >aaa</div>
+			" ></div>
 			
 			<div style="
-			border:1px solid #0000ff;
+			border: 1px solid #0000ff;
 			text-align: center;
 			display: block;
-			" >
-			<span>1</span>
-			<span style="
-			font-weight: bold;
-			text-decoration: underline;
-			">2</span>
-			<span>3</span>
-		</div>
+			" class="navigation" >
+				<span style="display: none;" >0</span>
+				<span class="active">1</span>
+				<span>2</span>
+				<span>3</span>
+			</div>
 			
 		</td>
 	</tr>

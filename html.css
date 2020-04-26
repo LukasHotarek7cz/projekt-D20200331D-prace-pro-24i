@@ -10,6 +10,10 @@ img{
 	max-width: 100px;
 }
 
+h3{
+	margin: 0px;
+}
+
 .borders{
 	border:5px solid #bebebe;
 	border-radius: 0.7em;
@@ -37,6 +41,25 @@ input[type=text]{
 	border:5px solid #ffffff;
 	
 }
+
+
+
+.navigation > *{
+	font-weight: bold;
+	font-size: 150%;
+	cursor: pointer;
+	color:#ffffff;
+}
+
+.navigation > span:hover{
+	color:rgb(99, 99, 255);
+}
+
+.navigation > .active{
+	text-decoration: underline;
+	color:rgb(99, 99, 255);
+}
+
 
 
 
