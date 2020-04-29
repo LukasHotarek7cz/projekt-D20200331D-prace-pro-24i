@@ -219,7 +219,7 @@ var globalVar = new function(){
 
 window.onload = function(){
 	
-	globalVar.navigation = document.querySelectorAll(".navigation > *");
+	globalVar.navigation = document.querySelectorAll(".Web-navigation > *");
 	
 	globalVar.navigation.forEach(function(e1){ e1.addEventListener("click", function(aElement){
 		
@@ -245,11 +245,9 @@ window.onload = function(){
 		globalVar.navigation[3].innerHTML = globalVar.activNavigation*1+2;
 		
 		// download new data
+		// + build and print web
 		globalVar.fillData();
 		
-		// build and print web
-		//globalVar.printWebs();
-		//globalVar.printImages();
 		
 		//document.querySelector("#log").innerHTML += globalVar.activNavigation; // DEBUG
 	} ) });
@@ -265,11 +263,8 @@ window.onload = function(){
 			globalVar.searchText = document.querySelector("#TextSearch").value;
 			
 			// download new data
+			// + build and print web
 			globalVar.fillData();
-			
-			// build and print web
-			globalVar.printWebs();
-			globalVar.printImages();
 			
 		});
 	});
