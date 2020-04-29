@@ -10,7 +10,7 @@
 <meta name="description" content="html" />										<!--popis stranky-->
 <meta name="generator" content="Visual Studio Code" />							<!--program ktery stranku vytvoril-->
 <meta name="robots" content="noindex,nofollow" />								<!--boti-->
-<meta http-equiv="refresh" content="10" />								<!--refresh kazdejch 300 sekund-->
+<meta http-equiv="refresh" content="100" />								<!--refresh kazdejch 300 sekund-->
 <meta name="author" content="Lukas Hotarek" />									<!--autor-->
 
 
@@ -53,19 +53,17 @@
 			" >Search</button>
 		</div>
 		<div class="Find">
-			<div class="Image-box">
-				<div class="Image-title" >Image Result</div>
-				<div class="Image-result" id="FoundImages" >aaa</div>
+			<div class="Image-box borders">
+				<div class="Image-title" ><h3>Image Result</h3></div>
+				<div class="Image-result" id="FoundImages" ></div>
 			</div>
-			<div class="Web-box">
-				<div class="Web-title">Web Result</div>
-				<div class="Web-result" id="FoundText" >aaa</div>
+			<div class="Web-box borders">
+				<div class="Web-title"><h3>Web Result</h3></div>
+				<div class="Web-result" id="FoundText" ></div>
 				<div class="Web-navigation">
-					<span>1</span>
-					<span style="
-					font-weight: bold;
-					text-decoration: underline;
-					">2</span>
+					<span style="display: none;" >0</span>
+					<span class="active">1</span>
+					<span>2</span>
 					<span>3</span>
 				</div>
 			</div>
