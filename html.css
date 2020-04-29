@@ -2,17 +2,18 @@
 *{
 	box-sizing:border-box;
 	table-layout:auto;
-	
 }
 
 
 img{
-	max-width: 100px;
+	max-height: 100px;
 }
 
 h3{
 	margin: 0px;
 }
+
+
 
 .borders{
 	border:5px solid #bebebe;
@@ -25,6 +26,8 @@ h3{
 	margin: 1em;
 	width: 75%;
 }
+
+
 
 .BTNSearch{
 	padding: 1em;
@@ -40,19 +43,23 @@ h3{
 	
 }
 
+.FoundImages table{
+	width: 100%;
+}
+
+/*
+.FoundImages td{
+	max-width: 100px;
+	border: 1px solid black;
+	
+}
+*/
+
 
 .FoundText{
 	min-height: 30em;
 	display: block;
 }
-
-
-.log{
-	border:5px solid #ffffff;
-	
-}
-
-
 .navigation{
 	text-align: center;
 	display: block;
@@ -75,4 +82,15 @@ h3{
 
 
 
+
+
+
+
+
+
+
+.log{
+	border:5px solid #ffffff;
+	
+}
 
