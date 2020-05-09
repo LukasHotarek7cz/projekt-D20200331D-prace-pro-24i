@@ -76,3 +76,22 @@ h3{
 
 
 
+.navigation > *{
+	font-weight: bold;
+	font-size: 150%;
+	cursor: pointer;
+	color:#ffffff;
+}
+
+.navigation > span:hover{
+	color:rgb(99, 99, 255);
+}
+
+.navigation > .active{
+	text-decoration: underline;
+	color:rgb(99, 99, 255);
+}
+
+
+
+
