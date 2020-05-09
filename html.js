@@ -31,6 +31,7 @@ var globalVar = new function(){
 	this.webs = [];
 	this.images = [];
 	this.i1 = 0;
+	this.i2 = 0;
 	this.activNavigation = 1;
 	this.navigation = [];
 	
@@ -109,7 +110,7 @@ var globalVar = new function(){
 		this.images.push(R1);
 	}
 	
-	this.readNext = function (){
+	this.readNextWebs = function (){
 		var thisGlobalVar = this;
 		//document.querySelector("#log").innerHTML += "https://www.googleapis.com/customsearch/v1?key=" + GlobalConfig.APIKey + "&cx=" + GlobalConfig.cx + "&q=" + this.searchText + "&start=" + (this.i1+1) + "&searchType=image<br>";
 		
@@ -128,6 +129,11 @@ var globalVar = new function(){
 		xhttp.open("GET", "https://www.googleapis.com/customsearch/v1?key=" + GlobalConfig.APIKey + "&cx=" + GlobalConfig.cx + "&q=" + this.searchText + "&start=" + (this.i1+1) + "", true);
 		xhttp.send();
 		
+		this.i1 += 10;
+	}
+	
+	this.readNextImages = function (){
+		
 		// AJAX
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
@@ -140,20 +146,25 @@ var globalVar = new function(){
 				//document.querySelector("#log").innerHTML += "<pre>"+fTiskArrayObj(JSON.parse(this.responseText))+"</pre>";
 			}
 		};
-		xhttp.open("GET", "https://www.googleapis.com/customsearch/v1?key=" + GlobalConfig.APIKey + "&cx=" + GlobalConfig.cx + "&q=" + this.searchText + "&start=" + (this.i1+1) + "&searchType=image", true);
+		xhttp.open("GET", "https://www.googleapis.com/customsearch/v1?key=" + GlobalConfig.APIKey + "&cx=" + GlobalConfig.cx + "&q=" + this.searchText + "&start=" + (this.i2+1) + "&searchType=image", true);
 		xhttp.send();
 		
 		
-		this.i1 += 10;
+		this.i2 += 10;
 	}
 	
 	
 	//???
 	this.fillData = function(){
-		if(this.images.length >= 99){return 1;}
+		if(this.webs.length >= 99){return 1;}
 		if(this.i1 >= 99){return 2;}
+		var n1 =this.activNavigation*4;
+		for(var i1 = this.webs.length; i1<n1; i1+=10){this.readNextWebs();}
+		
+		if(this.images.length >= 99){return 1;}
+		if(this.i2 >= 99){return 2;}
 		var n1 =this.activNavigation*12;
-		for(var i1 = this.images.length; i1<n1; i1+=10){this.readNext();}
+		for(var i1 = this.images.length; i1<n1; i1+=10){this.readNextImages();}
 	}	
 	
 	
